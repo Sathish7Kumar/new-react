@@ -1,12 +1,21 @@
 import React, { Component } from 'react'
 
- class State extends Component {
+ class LifeCycle extends Component {
     constructor(){
         super()
         this.state= {
             count :0,
-            color : "red"
         }
+        console.log("constructor function called");
+    }
+    componentDidMount(){
+        console.log("component mounted");
+    }
+    componentDidUpdate(){
+        console.log("component updated and Re-rendered");
+    }
+    componentWillUnmount(){
+        console.log("component unmounted");
     }
     handleAdd = () =>{
         this.setState({
@@ -20,36 +29,23 @@ import React, { Component } from 'react'
             })
         }
     }
-    // handleReset= ()=>{
-    //     this.setState({
-    //         count : 0
-    //     })
-    // }
-    handleColor = () =>{
+    handleReset= ()=>{
         this.setState({
-            color : "blue"
+            count : 0
         })
     }
   render() { 
     
-    console.log("re-render",this.state.count);
-    
+        console.log("render");
+        
     return (
       <>
       <h2>My Count : {this.state.count}</h2>
       <button onClick={this.handleAdd}>Increment</button>
       <button onClick={this.handleMinus}>Decrement</button>
-      <button onClick={
-        ()=>{
-        this.setState({
-            count : 0
-        })
-    }
-    }>Reset</button>
-    <h3>My fav color is {this.state.color}</h3>
-    <button onClick={this.handleColor}>Change Color</button>
+      <button onClick={this.handleReset}>Reset</button>
       </>
     )
   }
 }
-export default State
+export default LifeCycle
