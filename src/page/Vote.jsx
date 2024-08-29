@@ -36,6 +36,7 @@ const Vote = () => {
       />
       <h1>My age is {age} </h1>
       <button onClick={handleVote}>Vote Check</button>
+      <button onClick={()=>setage(0)}>Reset</button>
       {message && <><p>{message}</p></>}
     </div>
   );
