@@ -2,6 +2,8 @@ import React, { useState } from "react";
 
 const Homepage = () => {
 
+  const [data, setdata] = useState([])
+
   const [oldDetails, setoldDetails] = useState({
     myname: "",
     age: "",
@@ -26,20 +28,25 @@ const Homepage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setdetails({
+    let newData = {
       newName: oldDetails.myname,
       newAge: oldDetails.age,
-    });    
+    }
+    setdetails(newData);  
+    data.push(newData)
+    oldDetails.myname = ""
+    oldDetails.age = ""
   };
 
   return (
     <div>
+      <p>{JSON.stringify(data)}</p>
       <br />
       <form onSubmit={handleSubmit}>
         <input
           type="text"
           name="myname"
-          // value={oldDetails.myname}
+          value={oldDetails.myname}
           required
           onChange={handleInp}
         />{" "}
@@ -47,7 +54,7 @@ const Homepage = () => {
         <input
           type="text"
           name="age"
-          // value={oldDetails.age}
+          value={oldDetails.age}
           required
           onChange={handleInp}
         />{" "}
