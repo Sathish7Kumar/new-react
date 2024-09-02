@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 const Homepage = ({food}) => {
+  
   return (
     <>
     <div>
@@ -11,10 +12,12 @@ const Homepage = ({food}) => {
       <div>
         {food.map((item,index)=>{
           return(
+            <Link to={`/${item.name}`}>
             <div key={index}>
               <h2>{item.name}</h2>
               <img src={item.image} alt="" height={150} width={150} />
             </div>
+            </Link>
           )
         })}
         <h5><Link to='/products'>Goto Food Page</Link></h5>

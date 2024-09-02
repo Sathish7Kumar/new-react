@@ -7,6 +7,8 @@ import Navbar from './RouteDOM/Navbar'
 import './App.css'
 import FoodData from './RouteDOM/Fooddata'
 import AllFood from './RouteDOM/AllFood'
+import Pizza from './RouteDOM/Pizza'
+import Burger from './RouteDOM/Burger'
 
 
 const App3 = () => {
@@ -42,6 +44,8 @@ const App3 = () => {
         <Routes>
             <Route path='/' element={<Homepage food={food}/>} />
             <Route path='/products' element={<AllFood food={food} addCart={addCart}/>} />
+            <Route path='/pizza' element={<Pizza />} />
+            <Route path='/burger' element={<Burger />} />
             <Route path='/cart' element={<Cart cart={cart} clearCart={clearCart} removeCart={removeCart} calcTotal={calcTotal}/>} />
         </Routes>
     </BrowserRouter>
