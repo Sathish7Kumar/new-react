@@ -1,73 +1,31 @@
-import React, { useState } from "react";
+import React from 'react'
+import { Link } from 'react-router-dom'
 
-const Homepage = () => {
-
-  const [data, setdata] = useState([])
-
-  const [oldDetails, setoldDetails] = useState({
-    myname: "",
-    age: "",
-  });
-
-  const [details, setdetails] = useState({
-    newName: "",
-    newAge: "",
-  });
-
-  const handleInp = (e) => {  
-    
-    const {name,value} = e.target
-    
-    setoldDetails(
-    (prevState) => ({
-      ...prevState,
-      [name]:value
-    })
-  )
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    let newData = {
-      newName: oldDetails.myname,
-      newAge: oldDetails.age,
-    }
-    setdetails(newData);  
-    data.push(newData)
-    oldDetails.myname = ""
-    oldDetails.age = ""
-  };
-
+const Homepage = ({food}) => {
   return (
+    <>
     <div>
-      <p>{JSON.stringify(data)}</p>
-      <br />
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="myname"
-          value={oldDetails.myname}
-          required
-          onChange={handleInp}
-        />{" "}
-        <br /> <br />
-        <input
-          type="text"
-          name="age"
-          value={oldDetails.age}
-          required
-          onChange={handleInp}
-        />{" "}
-        <br /> <br />
-        <button>Submit</button>
-      </form>
-      <hr />
+    {
+      food.length > 0 ? 
+      <>
       <div>
-        <h1>My name is : {details.newName} </h1>
-        <h1>My Age is : {details.newAge} </h1>
+        {food.map((item,index)=>{
+          return(
+            <div key={index}>
+              <h2>{item.name}</h2>
+              <img src={item.image} alt="" height={150} width={150} />
+            </div>
+          )
+        })}
+        <h5><Link to='/products'>Goto Food Page</Link></h5>
       </div>
+      </>
+       : 
+      <><h2>no food items</h2></>
+    }
     </div>
-  );
-};
+    </>
+  )
+}
 
-export default Homepage;
+export default Homepage

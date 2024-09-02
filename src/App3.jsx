@@ -1,23 +1,48 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {BrowserRouter,Routes,Route} from "react-router-dom"
 import Homepage from './RouteDOM/Homepage'
 import Mobile from './RouteDOM/Mobile'
 import Cart from './RouteDOM/Cart'
 import Navbar from './RouteDOM/Navbar'
 import './App.css'
-import Bmi from './RouteDOM/Bmi'
-import Accd from './RouteDOM/Accd'
+import FoodData from './RouteDOM/Fooddata'
+import AllFood from './RouteDOM/AllFood'
+
 
 const App3 = () => {
+  const [food, setfood] = useState([])
+  const [cart, setcart] = useState([])
+
+  useEffect(()=>{
+    setfood(FoodData)
+  },[])
+
+  const addCart = (item) =>{
+    setcart((prevCart)=>[...prevCart,item])
+  }
+
+  const removeCart = (i) =>{ // 2
+    setcart((prevCart)=> prevCart.filter((item,index)=> index != i   ))
+  }
+  
+  const calcTotal = () => {
+    let totalPrice = 0
+    cart.forEach(item => totalPrice = totalPrice + parseInt(item.price))
+    return totalPrice.toFixed(2);
+  }
+
+  const clearCart = () =>{
+    setcart([])
+  }
+
   return (
     <>
     <BrowserRouter>
-        <Navbar/>
+        <Navbar cart={cart}/>
         <Routes>
-            <Route path='/' element={<Homepage/>} />
-            <Route path='/mobile' element={<Mobile/>} />
-            <Route path='/bmi' element={<Bmi/>} />
-            {/* <Route path='/accord' element={<Accd/>} /> */}
+            <Route path='/' element={<Homepage food={food}/>} />
+            <Route path='/products' element={<AllFood food={food} addCart={addCart}/>} />
+            <Route path='/cart' element={<Cart cart={cart} clearCart={clearCart} removeCart={removeCart} calcTotal={calcTotal}/>} />
         </Routes>
     </BrowserRouter>
     </>
