@@ -29,7 +29,7 @@ const App3 = () => {
   
   const calcTotal = () => {
     let totalPrice = 0
-    cart.forEach(item => totalPrice = totalPrice + parseInt(item.price))
+    cart.forEach(item => totalPrice+=parseInt(item.price))
     return totalPrice.toFixed(2);
   }
 
