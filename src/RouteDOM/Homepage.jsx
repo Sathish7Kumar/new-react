@@ -12,7 +12,7 @@ const Homepage = ({food}) => {
       <div>
         {food.map((item,index)=>{
           return(
-            <Link to={`/${item.name}`}>
+            <Link key={index} to={`/${item.name}`}>
             <div key={index}>
               <h2>{item.name}</h2>
               <img src={item.image} alt="" height={150} width={150} />

@@ -14,9 +14,16 @@ import Burger from './RouteDOM/Burger'
 const App3 = () => {
   const [food, setfood] = useState([])
   const [cart, setcart] = useState([])
+  const [pizza, setpizza] = useState([])
+  const [burger, setburger] = useState([])
+
+  console.log(FoodData[0]);
+  
 
   useEffect(()=>{
     setfood(FoodData)
+    setpizza([FoodData[0]])
+    setburger(FoodData[1])
   },[])
 
   const addCart = (item) =>{
@@ -44,8 +51,8 @@ const App3 = () => {
         <Routes>
             <Route path='/' element={<Homepage food={food}/>} />
             <Route path='/products' element={<AllFood food={food} addCart={addCart}/>} />
-            <Route path='/pizza' element={<Pizza />} />
-            <Route path='/burger' element={<Burger />} />
+            <Route path='/pizza' element={<Pizza pizza={pizza} addCart={addCart}/>} />
+            <Route path='/burger' element={<Burger burger={burger} addCart={addCart}/>} />
             <Route path='/cart' element={<Cart cart={cart} clearCart={clearCart} removeCart={removeCart} calcTotal={calcTotal}/>} />
         </Routes>
     </BrowserRouter>
