@@ -1,9 +1,11 @@
 import React from "react";
+import Navbar from "./Navbar";
 
 const Cart = ({ cart,removeCart,calcTotal,clearCart }) => {
   //
   return (
     <div>
+      <Navbar cart={cart}/>
       {cart.length > 0 ? (
         <>
           <div>

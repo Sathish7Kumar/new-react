@@ -1,8 +1,10 @@
 import React from "react";
+import Navbar from "./Navbar";
 
-const Pizza = ({ pizza, addCart }) => {
+const Pizza = ({ pizza, addCart ,cart,}) => {
   return (
     <>
+    <Navbar cart={cart}/>
       <div>
         {pizza.length > 0 ? (
           <>

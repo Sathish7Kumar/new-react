@@ -1,11 +1,12 @@
 import React from "react";
+import Navbar from "./Navbar";
 
-const AllFood = ({ food, addCart }) => {
+const AllFood = ({ food, addCart,cart }) => {
   return (
     <>
-      <div>
+    <Navbar cart={cart}/>
+      <div key="">
         {food.length > 0 ? (
-          <>
             <div>
               {food.map((item, index) => {
                 return (
@@ -46,7 +47,6 @@ const AllFood = ({ food, addCart }) => {
                 );
               })}
             </div>
-          </>
         ) : (
           <>
             <h2>no food items</h2>

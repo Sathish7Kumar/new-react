@@ -1,10 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Navbar from './Navbar'
 
-const Homepage = ({food}) => {
+const Homepage = ({food,cart}) => {
   
   return (
     <>
+    <Navbar cart={cart}/>
     <div>
     {
       food.length > 0 ? 

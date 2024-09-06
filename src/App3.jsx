@@ -9,16 +9,17 @@ import FoodData from './RouteDOM/Fooddata'
 import AllFood from './RouteDOM/AllFood'
 import Pizza from './RouteDOM/Pizza'
 import Burger from './RouteDOM/Burger'
+import Login from './RouteDOM/Login'
+import PrivateRoute from './RouteDOM/PrivateRoute'
 
 
 const App3 = () => {
   const [food, setfood] = useState([])
   const [cart, setcart] = useState([])
   const [pizza, setpizza] = useState([])
-  const [burger, setburger] = useState([])
+  const [burger, setburger] = useState([]) 
 
-  console.log(FoodData[0]);
-  
+  const [isLoggedIn, setisLoggedIn] = useState(false)
 
   useEffect(()=>{
     setfood(FoodData)
@@ -47,13 +48,13 @@ const App3 = () => {
   return (
     <>
     <BrowserRouter>
-        <Navbar cart={cart}/>
         <Routes>
-            <Route path='/' element={<Homepage food={food}/>} />
-            <Route path='/products' element={<AllFood food={food} addCart={addCart}/>} />
-            <Route path='/pizza' element={<Pizza pizza={pizza} addCart={addCart}/>} />
-            <Route path='/burger' element={<Burger burger={burger} addCart={addCart}/>} />
-            <Route path='/cart' element={<Cart cart={cart} clearCart={clearCart} removeCart={removeCart} calcTotal={calcTotal}/>} />
+            <Route path='/' element={<Login isLoggedIn={isLoggedIn} setisLoggedIn={setisLoggedIn}/>} />
+            <Route path='/home' element={<PrivateRoute isLoggedIn={isLoggedIn} setisLoggedIn={setisLoggedIn} element={<Homepage food={food} cart={cart}/>}/>}  />
+            <Route path='/products' element={<PrivateRoute isLoggedIn={isLoggedIn} setisLoggedIn={setisLoggedIn} element={<AllFood food={food} cart={cart} addCart={addCart}/>}/>}  />
+            <Route path='/pizza' element={<PrivateRoute isLoggedIn={isLoggedIn} setisLoggedIn={setisLoggedIn} element={<Pizza pizza={pizza} cart={cart} addCart={addCart}/>}/>}  />
+            <Route path='/burger' element={<PrivateRoute isLoggedIn={isLoggedIn} setisLoggedIn={setisLoggedIn} element={<Burger burger={burger} cart={cart} addCart={addCart}/>}/>}  />
+            <Route path='/cart' element={<PrivateRoute isLoggedIn={isLoggedIn} setisLoggedIn={setisLoggedIn} element={<Cart cart={cart} clearCart={clearCart} removeCart={removeCart} calcTotal={calcTotal}/>}/>}  />
         </Routes>
     </BrowserRouter>
     </>

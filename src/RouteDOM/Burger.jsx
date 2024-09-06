@@ -1,9 +1,11 @@
 import React from "react";
+import Navbar from "./Navbar";
 
-const Burger = ({ burger, addCart }) => {
+const Burger = ({ burger, addCart,cart }) => {
   // console.log(burger);
   return (
     <>
+    <Navbar cart={cart}/>
       <div>
         <h2>{burger.subItemsData.name}</h2>
         <div>
