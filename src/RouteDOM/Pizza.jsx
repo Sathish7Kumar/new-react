@@ -4,7 +4,7 @@ import Navbar from "./Navbar";
 const Pizza = ({ pizza, addCart ,cart,}) => {
   return (
     <>
-    <Navbar cart={cart}/>
+    {/* <Navbar cart={cart}/> */}
       <div>
         {pizza.length > 0 ? (
           <>

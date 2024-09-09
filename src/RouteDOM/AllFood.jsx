@@ -4,13 +4,13 @@ import Navbar from "./Navbar";
 const AllFood = ({ food, addCart,cart }) => {
   return (
     <>
-    <Navbar cart={cart}/>
-      <div key="">
+    {/* <Navbar cart={cart}/> */}
+      <div>
         {food.length > 0 ? (
             <div>
               {food.map((item, index) => {
                 return (
-                  <div>
+                  <div key={index}>
                     <h3>{item.subItemsData.name}</h3>
                     <div
                       style={{

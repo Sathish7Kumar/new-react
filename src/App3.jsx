@@ -48,6 +48,7 @@ const App3 = () => {
   return (
     <>
     <BrowserRouter>
+    <Navbar isLoggedIn={isLoggedIn} setisLoggedIn={setisLoggedIn} cart={cart}/>
         <Routes>
             <Route path='/' element={<Login isLoggedIn={isLoggedIn} setisLoggedIn={setisLoggedIn}/>} />
             <Route path='/home' element={<PrivateRoute isLoggedIn={isLoggedIn} setisLoggedIn={setisLoggedIn} element={<Homepage food={food} cart={cart}/>}/>}  />

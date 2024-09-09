@@ -5,7 +5,7 @@ const Burger = ({ burger, addCart,cart }) => {
   // console.log(burger);
   return (
     <>
-    <Navbar cart={cart}/>
+    {/* <Navbar cart={cart}/> */}
       <div>
         <h2>{burger.subItemsData.name}</h2>
         <div>

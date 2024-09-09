@@ -6,7 +6,7 @@ const Homepage = ({food,cart}) => {
   
   return (
     <>
-    <Navbar cart={cart}/>
+    {/* <Navbar cart={cart}/> */}
     <div>
     {
       food.length > 0 ? 

@@ -5,7 +5,7 @@ const Cart = ({ cart,removeCart,calcTotal,clearCart }) => {
   //
   return (
     <div>
-      <Navbar cart={cart}/>
+      {/* <Navbar cart={cart}/> */}
       {cart.length > 0 ? (
         <>
           <div>

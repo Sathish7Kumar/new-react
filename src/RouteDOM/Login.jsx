@@ -2,9 +2,10 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 const Login = ({isLoggedIn,setisLoggedIn}) => {
-    console.log(isLoggedIn);
+    // console.log(isLoggedIn);
     const [email, setemail] = useState("")
     const [password, setpassword] = useState("")
+
     const nav = useNavigate()
     const handleSubmit = (e) =>{
         e.preventDefault()
