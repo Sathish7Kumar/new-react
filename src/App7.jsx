@@ -43,17 +43,19 @@
 
 import React, { createContext, useEffect, useState } from "react";
 import axios from "axios";
-import {BrowserRouter,Routes,Route} from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import FetchCart from "./Fetch/FetchCart";
 import FetchHome from "./Fetch/FetchHome";
 import FetchProducts from "./Fetch/FetchProducts";
 import Fetchnavbar from "./Fetch/Fetchnavbar";
 import FetchProductDetails from "./Fetch/FetchProductDetails";
 
-export const ProductsContext = createContext()
+export const ProductsContext = createContext();
 
 const App7 = () => {
   const [products, setproducts] = useState([]);
+  const [cart, setcart] = useState([]);
+  const [cartValue, setcartValue] = useState(cart.length);
   const getResponse = async () => {
     try {
       const respone = await axios.get("https://fakestoreapi.com/products");
@@ -65,17 +67,21 @@ const App7 = () => {
   useEffect(() => {
     getResponse();
   }, []);
+
+  
   return (
-    <ProductsContext.Provider value={{products,setproducts}}>
-    <BrowserRouter>
-    <Fetchnavbar/>
-    <Routes>
-        <Route path="/" element={<FetchHome/>}/>
-        <Route path="/cart" element={<FetchCart/>}/>
-        <Route path="/products" element={<FetchProducts/>}/>
-        <Route path="/products/:id" element={<FetchProductDetails/>}/>
-    </Routes>
-    </BrowserRouter>
+    <ProductsContext.Provider
+      value={{ products, setproducts, cart, setcart, cartValue, setcartValue }}
+    >
+      <BrowserRouter>
+        <Fetchnavbar />
+        <Routes>
+          <Route path="/" element={<FetchHome />} />
+          <Route path="/cart" element={<FetchCart />} />
+          <Route path="/products" element={<FetchProducts />} />
+          <Route path="/products/:id" element={<FetchProductDetails />} />
+        </Routes>
+      </BrowserRouter>
     </ProductsContext.Provider>
   );
 };
